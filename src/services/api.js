@@ -17,11 +17,10 @@ export const login = async (username, password) => {
     }
 }
 
-
 export const setAuth = async (token) => {
     instance.defaults.headers.common.Authorization = `basic ${token}`;
 };
 
 export const test = () => {
-	instance.get("/login/users");
+	instance.get("/users");
 }
