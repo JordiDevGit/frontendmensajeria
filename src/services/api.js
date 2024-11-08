@@ -10,17 +10,19 @@ export const login = async (username, password) => {
             Authorization: "basic " + token,
         },
     });
-    console.log(response)
     if(response.data.resp === "Login exitoso"){
-        alert("uyuyuyuyu")
         setAuth(token);
+        return token;
     }
+    return null;
 }
 
 export const setAuth = async (token) => {
     instance.defaults.headers.common.Authorization = `basic ${token}`;
 };
 
-export const test = () => {
-	instance.get("/users");
-}
+export const getUsers = async () => await instance.get('/users');
+
+export const getUserMessages = async () => await instance.get('/messages');
+
+export const postUserMessage = async () => await instance.post('/messages');
